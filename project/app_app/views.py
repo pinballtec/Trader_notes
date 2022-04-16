@@ -6,7 +6,11 @@ from django.contrib.auth import login
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
-
+from django.views.generic import (
+    ListView,
+    DetailView,
+)
+from .models import Entry
 
 # Create your views here.
 
@@ -41,3 +45,12 @@ def login_request(request):
             messages.error(request, "Invalid username or password.")
     form = AuthenticationForm()
     return render(request=request, template_name="app_app/login.html", context={"login_form": form})
+
+
+class EntryListView(ListView):
+    model = Entry
+    queryset = Entry.objects.all().order_by("-date_created")
+
+
+class EntryDetailView(DetailView):
+    model = Entry

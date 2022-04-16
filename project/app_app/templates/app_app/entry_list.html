@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Entry_List</title>
+</head>
+<body>
+<!--{% block content %}-->
+{% for entry in entry_list %}
+    <article>
+        <h2 class="{{ entry.date_created|date:'l' }}">
+            {{ entry.date_created|date:'Y-m-d H:i' }}
+        </h2>
+        <h3>
+            <a href="{% url 'entry-detail' entry.id %}">
+                {{ entry.title }}
+            </a>
+        </h3>
+    </article>
+{% endfor %}
+<!--{% endblock content %}-->
+</body>
+</html>
