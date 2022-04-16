@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Entry_Confirm_Delete</title>
+</head>
+<body>
+{% extends "app_app/header.html" %}
+{% block content %}
+    <form method="post">{% csrf_token %}
+        <p>
+            Are you sure you want to delete
+            <em>"{{ entry.title }}"</em>
+            created on {{ entry.date_created|date:'Y-m-d' }}?
+        </p>
+        <input type="submit" value="Confirm">
+    </form>
+    <a href="{% url 'entry-detail' entry.id %}">
+        <button>Cancel</button>
+    </a>
+{% endblock %}
+</body>
+</html>
