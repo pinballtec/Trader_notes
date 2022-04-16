@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{% extends  %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,6 +17,8 @@
             </a>
         </h3>
     </article>
+<hr>
+<a href="{% url 'admin:logout' %}">Logout</a>
 {% endfor %}
 <!--{% endblock content %}-->
 </body>
