@@ -9,17 +9,32 @@
 {% for entry in entry_list %}
     <article>
         <h2 class="{{ entry.date_created|date:'l' }}">
-            {{ entry.date_created|date:'Y-m-d H:i' }}
+            <p> Time: {{ entry.date_created|date:'Y-m-d H:i' }}</p>
         </h2>
         <h3>
             <a href="{% url 'entry-detail' entry.id %}">
-                {{ entry.title }}
+                <p>Name: {{ entry.title }}</p>
+            </a>
+        </h3>
+        <h3>
+            <a href="{% url 'entry-detail' entry.id %}">
+                <p>Price: {{ entry.price }}</p>
+            </a>
+        </h3>
+        <h3>
+            <a href="{% url 'entry-detail' entry.id %}">
+                <p>Shares: {{ entry.shares }}</p>
             </a>
         </h3>
     </article>
 <hr>
-<a href="{% url 'admin:logout' %}">Logout</a>
 {% endfor %}
+{% if request.user.is_authenticated %}
+<p>Hello {{request.user}}</p>
+<a href="{% url 'logout' %}">Logout</a>
+{% else %}
+<a href="{% url 'test' %}">Register</a>
+{% endif %}
 <!--{% endblock content %}-->
 </body>
 </html>

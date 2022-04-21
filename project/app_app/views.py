@@ -5,7 +5,7 @@ from .forms import NewUserForm
 from django.contrib.auth import login
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import (
     ListView,
@@ -64,7 +64,7 @@ class EntryDetailView(DetailView):
 
 class EntryCreateView(CreateView):
     model = Entry
-    fields = ["title", "content"]
+    fields = ["title", "content", "price", "shares", "date_created"]
     success_url = reverse_lazy("entry-list")
 
 
@@ -86,3 +86,8 @@ class EntryDeleteView(DeleteView):
 
 def urls(request):
     return render(request, 'app_app/urls.html')
+
+
+def logout_page(request):
+    logout(request)
+    return redirect('login')
