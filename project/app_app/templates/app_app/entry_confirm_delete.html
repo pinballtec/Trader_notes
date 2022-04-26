@@ -7,19 +7,19 @@
 <body>
 {% extends "app_app/header.html" %}
 {% block content %}
-<div class="login-form-1">
+<div class= "px-4 py-5 my-5 text-center">
     <form method="post" id="login-form">{% csrf_token %}
-        <p>
+        <p class = "lead font-weight-normal">
             Are you sure you want to delete
-            <em>"{{ entry.title }}"</em>
+            <em><b>"{{ entry.title }}"</b></em>
             created on {{ entry.date_created|date:'Y-m-d' }}?
         </p>
         <input type="submit" value="Confirm">
     </form>
-</div>
-    <a href="{% url 'entry-detail' entry.id %}">
-        <button>Cancel</button>
+    <a href="{% url 'entry-detail' entry.id %}" class="btn btn-outline-dark btn-sm m1">
+        Cancel
     </a>
+</div>
 {% endblock %}
 </body>
 </html>

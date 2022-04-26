@@ -5,11 +5,17 @@
     <title>Entry_Detail</title>
 </head>
 <body>
-<article>
-    <h2><p>ID: {{entry.id}}</p></h2>
-    <h2>{{ entry.date_created|date:'Y-m-d H:i' }}</h2>
-    <h3>{{ entry.title }}</h3>
-    <p>{{ entry.content }}</p>
-</article>
+    {% extends 'app_app/header.html' %}
+    {% block content %}
+    <div class="px-4 py-5 my-5 text-center">
+        <article>
+            <h2><p>ID: {{entry.id}}</p></h2>
+            <h2>{{ entry.date_created|date:'Y-m-d H:i' }}</h2>
+            <h3>{{ entry.title }}</h3>
+            <p class = "lead font-weight-normal">{{ entry.content }}</p>
+        </article>
+        <a href = "{% url 'entry-list' %}" class="btn btn-dark">Back</a>
+    </div>
+    {% endblock content %}
 </body>
 </html>
