@@ -12,3 +12,4 @@ urlpatterns = [
     path("entry/<int:pk>/update", views.EntryUpdateView.as_view(), name="entry-update",),
     path("entry/<int:pk>/delete", views.EntryDeleteView.as_view(), name="entry-delete",),
 ]
+
